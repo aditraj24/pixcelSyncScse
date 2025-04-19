@@ -1,272 +1,303 @@
-/* index.css - Dark Theme for PetPals */
+/* PetPals Dark Theme CSS - Modern & Eye-Catching UI */
 
-/* --- Reset & Box-sizing --- */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* --- CSS Variables for Theming --- */
-:root {
-  --bg-color: #121212;
-  --surface-color: #1e1e1e;
-  --text-color: #ecf0f1;
-  --primary-color: #1abc9c;
-  --nav-bg: rgba(0, 0, 0, 0.6);
-  --footer-bg: #151515;
-  --overlay-color: rgba(0, 0, 0, 0.75);
-}
-
-/* --- Base Styles & Body --- */
-html, body {
-  height: 100%;
-  margin: 0;
-}
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.5;
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  position: relative;
-  overflow-x: hidden;
-}
-a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-a:hover {
-  opacity: 0.8;
-}
-
-/* --- Dark Overlay on Background Image (if any) --- */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--overlay-color);
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* --- Navigation Bar --- */
-.navBar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--nav-bg);
-  backdrop-filter: blur(8px);
-  padding: 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.navBar a {
-  color: var(--text-color);
-  font-weight: 600;
-  margin: 0 1rem;
-}
-
-/* --- Hero Section & Slideshow --- */
-.herosection {
-  position: relative;
-  height: 70vh;
-  overflow: hidden;
-}
-.heroImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.6s ease-in-out;
-}
-.heroImage img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: brightness(0.5);
-}
-.heroImage.active {
-  opacity: 1;
-  z-index: 1;
-}
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: var(--text-color);
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  z-index: 2;
-  border-radius: 50%;
-}
-.arrow.left  { left: 20px; }
-.arrow.right { right: 20px; }
-.arrow:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* --- Pet Tiles --- */
-.petTiles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  padding: 2rem;
-}
-.petTiles div {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--surface-color);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  height: 0;
-  padding-bottom: 75%; /* 4:3 aspect ratio */
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.petTiles div:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
-}
-.petTiles div img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.petTiles div::after {
-  content: attr(class);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: var(--text-color);
-  padding: 0.5rem;
-  font-weight: 600;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-/* --- Contact Us Section --- */
-.ContactUs {
-  background-color: var(--surface-color);
-  padding: 3rem 2rem;
-}
-.ContactUs h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-  color: var(--text-color);
-}
-.ContactUs form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.ContactUs input,
-.ContactUs textarea {
-  padding: 0.75rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  background-color: #2a2a2a;
-  color: var(--text-color);
-}
-.ContactUs button {
-  align-self: flex-end;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 4px;
-  color: var(--text-color);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-.ContactUs button:hover {
-  opacity: 0.8;
-}
-
-/* --- Footer --- */
-.footer {
-  background-color: var(--footer-bg);
-  color: var(--text-color);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  text-align: left;
-  font-size: 0.95rem;
-}
-.footer-section h4 {
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-}
-.footer-section a {
-  display: block;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.footer-section a:hover {
-  color: var(--primary-color);
-}
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 600px) {
-  .footer {
+/* Base Styles & Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+    overflow-x: hidden;
+  }
+  
+  /* Navigation Bar */
+  .navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .navBar a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .navBar a:hover {
+    color: #61DAFB;
+    transform: translateY(-2px);
+  }
+  
+  .navBar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #61DAFB;
+    transition: all 0.3s ease;
+  }
+  
+  .navBar a:hover::after {
+    width: 80%;
+    left: 10%;
+  }
+  
+  #searchBar {
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    width: 200px;
+    transition: all 0.3s ease;
+  }
+  
+  #searchBar:focus {
+    outline: none;
+    width: 250px;
+    box-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+  }
+  
+  /* Hero Section */
+  .herosection {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+  
+  .heroImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  
+  .heroImage.active {
+    opacity: 1;
+  }
+  
+  .heroImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+  }
+  
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+  
+  .arrow:hover {
+    background-color: rgba(97, 218, 251, 0.8);
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  .left {
+    left: 20px;
+  }
+  
+  .right {
+    right: 20px;
+  }
+  
+  /* Pet Tiles */
+  .petTiles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 40px;
+    margin-bottom: 50px;
+  }
+  
+  @media (min-width: 768px) {
+    .petTiles {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .petTiles div {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 250px;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .petTiles div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(97, 218, 251, 0.3);
+  }
+  
+  .petTiles div::after {
+    content: attr(class);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
     text-align: center;
   }
-  .footer-section a {
-    margin-bottom: 0.75rem;
+  
+  .petTiles img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
   }
-}
-/* ContactUs Button – Dark Theme with Animation */
-.ContactUs button {
-  align-self: flex-end;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 0.2s ease, filter 0.2s ease;
-  animation: pulseButton 2.5s ease-in-out infinite;
-}
-
-.ContactUs button:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-/* Keyframes for gentle pulsing */
-@keyframes pulseButton {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.03); }
-  100% { transform: scale(1); }
-}
-.ContactUs{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  
+  .petTiles div:hover img {
+    transform: scale(1.1);
+  }
+  
+  /* Contact Us Button */
+  .ContactUs {
+    text-align: center;
+    margin: 40px 0;
+  }
+  
+  .ContactUs button {
+    background: linear-gradient(45deg, #3a7bd5, #61DAFB);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(58, 123, 213, 0.3);
+  }
+  
+  .ContactUs button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(97, 218, 251, 0.5);
+    background: linear-gradient(45deg, #61DAFB, #3a7bd5);
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #1e1e1e;
+    padding: 50px 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    color: #b0b0b0;
+  }
+  
+  @media (min-width: 768px) {
+    .footer {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .footer-section h4 {
+    color: #61DAFB;
+    margin-bottom: 20px;
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .footer-section h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    background-color: #61DAFB;
+  }
+  
+  .footer-section a {
+    display: block;
+    color: #b0b0b0;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .footer-section a:hover {
+    color: #61DAFB;
+    transform: translateX(5px);
+  }
+  
+  /* Animations and Effects */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .petTiles div, .ContactUs, .footer-section {
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+  }
+  
+  .petTiles div:nth-child(1) { animation-delay: 0.1s; }
+  .petTiles div:nth-child(2) { animation-delay: 0.2s; }
+  .petTiles div:nth-child(3) { animation-delay: 0.3s; }
+  .petTiles div:nth-child(4) { animation-delay: 0.4s; }
+  
+  .ContactUs { animation-delay: 0.5s; }
+  
+  .footer-section:nth-child(1) { animation-delay: 0.6s; }
+  .footer-section:nth-child(2) { animation-delay: 0.7s; }
+  .footer-section:nth-child(3) { animation-delay: 0.8s; }
+  .footer-section:nth-child(4) { animation-delay: 0.9s; }
+  
+  /* Adding a cool hover effect to the entire website */
+  a, button {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  a::before, button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.7s;
+  }
+  
+  a:hover::before, button:hover::before {
+    left: 100%;
+  }

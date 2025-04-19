@@ -1,121 +1,299 @@
-body {
-    font-family: Arial, sans-serif;
+/* PetPals Dogs Page - Dark Theme CSS */
+
+/* Base Styles & Reset */
+* {
     margin: 0;
-    padding: 2rem;
-    background-color: #fff8f0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
   }
   
-  .dog-container {
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+  }
+  
+  /* Navigation Bar - Same as index.css */
+  .navBar {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   }
   
+  .navBar a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .navBar a:hover {
+    color: #61DAFB;
+    transform: translateY(-2px);
+  }
+  
+  .navBar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #61DAFB;
+    transition: all 0.3s ease;
+  }
+  
+  .navBar a:hover::after {
+    width: 80%;
+    left: 10%;
+  }
+  
+  /* Dog Cards Container */
+  .dog-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: all 0.5s ease;
+  }
+  
+  @media (min-width: 650px) {
+    .dog-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .dog-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  /* Dog Card Styling */
   .dog-card {
-    background-color: white;
-    padding: 1rem;
-    width: 45%;
-    max-width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    text-align: center;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+  }
+  
+  .dog-card:nth-child(1) { animation-delay: 0.1s; }
+  .dog-card:nth-child(2) { animation-delay: 0.2s; }
+  .dog-card:nth-child(3) { animation-delay: 0.3s; }
+  .dog-card:nth-child(4) { animation-delay: 0.4s; }
+  
+  .dog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(97, 218, 251, 0.3);
   }
   
   .dog-card img {
     width: 100%;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .dog-card:hover img {
+    transform: scale(1.1);
+  }
+  
+  .dog-card h2 {
+    text-align: center;
+    padding: 15px 10px;
+    color: #e0e0e0;
+    font-size: 18px;
   }
   
   .learn-btn {
-    padding: 0.5rem 1rem;
-    background-color: #4CAF50;
+    margin: 10px auto 20px;
+    padding: 10px 25px;
+    background: linear-gradient(45deg, #3a7bd5, #61DAFB);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 20px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(58, 123, 213, 0.3);
   }
   
   .learn-btn:hover {
-    background-color: #388e3c;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(97, 218, 251, 0.5);
+    background: linear-gradient(45deg, #61DAFB, #3a7bd5);
   }
   
+  /* Details Section */
   .details {
-    max-width: 600px;
-    margin: auto;
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.5s ease;
+    position: relative;
   }
   
   .details img {
     width: 100%;
+    height: 300px;
+    object-fit: cover;
     border-radius: 10px;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .details h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #61DAFB;
+    border-bottom: 2px solid #61DAFB;
+    padding-bottom: 10px;
   }
   
   .details ul {
     list-style: none;
-    padding: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 30px;
   }
   
-  .details ul li {
-    margin: 0.5rem 0;
+  .details li {
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+  }
+  
+  .details li strong {
+    color: #61DAFB;
+  }
+  
+  .back-btn {
+    background-color: transparent;
+    color: #61DAFB;
+    border: 2px solid #61DAFB;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  .back-btn:hover {
+    background-color: rgba(97, 218, 251, 0.2);
+    transform: translateX(-5px);
+  }
+  
+  /* Adoption Form */
+  .adoption-form {
+    margin-top: 30px;
+    background-color: #252525;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .adoption-form h3 {
+    color: #61DAFB;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
   }
   
   .adoption-form input,
   .adoption-form textarea {
     width: 100%;
-    padding: 0.75rem;
-    margin: 0.5rem 0;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: none;
+    background-color: #333;
+    color: #e0e0e0;
     border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .adoption-form input:focus,
+  .adoption-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(97, 218, 251, 0.5);
+    background-color: #3a3a3a;
+  }
+  
+  .adoption-form textarea {
+    min-height: 120px;
+    resize: vertical;
   }
   
   .adoption-form button {
-    background-color: #2196F3;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(45deg, #3a7bd5, #61DAFB);
     color: white;
-    padding: 0.6rem 1.2rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
   }
   
   .adoption-form button:hover {
-    background-color: #1976D2;
+    background: linear-gradient(45deg, #61DAFB, #3a7bd5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(97, 218, 251, 0.3);
   }
   
-  .back-btn {
-    background: none;
-    color: #2196F3;
-    font-weight: bold;
-    font-size: 1rem;
-    border: none;
-    margin-bottom: 1rem;
-    cursor: pointer;
-  }
-  
+  /* Utility Classes */
   .hidden {
     display: none;
   }
-
-  .navBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--nav-bg);
-    backdrop-filter: blur(8px);
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  .navBar a {
-    color: var(--text-color);
-    font-weight: 600;
-    margin: 0 1rem;
+  
+  /* Shared hover effect */
+  button, a {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  button::before, a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.7s;
+  }
+  
+  button:hover::before, a:hover::before {
+    left: 100%;
   }

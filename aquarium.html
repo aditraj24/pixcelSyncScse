@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reptiles</title>
-  <link rel="stylesheet" href="reptiles.css">
+  <title>Aquarium</title>
+  <link rel="stylesheet" href="aquarium.css">
 </head>
 <body>
     <div class="navBar">
@@ -12,7 +12,7 @@
         <a href="dogs.html">Dogs</a>
         <a href="cats.html">Cats</a>
         <a href="bird.html">Birds</a>
-        <a href="reptiles.html">Reptiles</a>
+        <a href="#">Aquarium</a>
         <a href="#">Cart</a>
         <a href="#">Contact Us</a>
       </div>
@@ -20,7 +20,7 @@
   <div class="fish-container">
     <div class="angelfish" data-fish="setrix">
       <div id="img_angelfish">
-        <img src="sterixcat.jpg" alt="Angel fish">
+        <img src="./media/sterixcat.jpg" alt="Angel fish">
       </div>
       <h2>Setrix Cat</h2>
       <button class="learn-btn">Learn More</button>
@@ -28,7 +28,7 @@
 
     <div class="blue-tang" data-fish="van">
       <div id="img_blue-tang">
-        <img src="turkishvan.jpg" alt="blue tang">
+        <img src="./media/turkishvan.jpg" alt="blue tang">
       </div>
       <h2>Turkish Van</h2>
       <button class="learn-btn">Learn More</button>
@@ -36,7 +36,7 @@
 
     <div class="butterflyfish" data-fish="curl">
       <div id="img_butterflyfish">
-        <img src="butterflyfish.jpg" alt="butter fly fish">
+        <img src="./media/butterflyfish.jpg" alt="butter fly fish">
       </div>
       <h2>American Curl</h2>
       <button class="learn-btn">Learn More</button>
@@ -44,7 +44,7 @@
 
     <div class="goldfish" data-fish="persian">
       <div id="img_goldfish">
-        <img src="whitepersian.webp" alt="gold fish">
+        <img src="./media/whitepersian.webp" alt="gold fish">
       </div>
       <h2>White Persian</h2>
       <button class="learn-btn">Learn More</button>
@@ -53,20 +53,30 @@
 
   <!-- Detail View -->
   <div class="details hidden">
-    <img id="detail-img" src="" alt="">
-    <h2 id="detail-name"></h2>
-    <p><strong>Age:</strong> <span id="detail-age"></span></p>
-    <p><strong>Breed:</strong> <span id="detail-breed"></span></p>
-    <p><strong>Size:</strong> <span id="detail-size"></span></p>
-    <p><strong>Vaccine:</strong> <span id="detail-vaccine"></span></p>
-    <p><strong>Location:</strong> <span id="detail-location"></span></p>
-    <button class="back-btn">Back</button>
+    <button class="back-btn">← Back to List</button>
+    <img id="detail-img" src="" alt="Dog Image">
+    <h2 id="detail-name">Dog Name</h2>
+    <ul>
+      <li><strong>Age:</strong> <span id="detail-age"></span></li>
+      <li><strong>Breed:</strong> <span id="detail-breed"></span></li>
+      <li><strong>Size:</strong> <span id="detail-size"></span></li>
+      <li><strong>Vaccination:</strong> <span id="detail-vaccine"></span></li>
+      <li><strong>Location:</strong> <span id="detail-location"></span></li>
+    </ul>
+
+    <form class="adoption-form">
+      <h3>Contact for Adoption</h3>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Why do you want to adopt?" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
   </div>
 
   <script>
     const fish = {
       setrix: {
-        img: 'angelfish.jpg',
+        img: './media/sterixcat.jpg',
         name: 'Setrix Cat',
         age: '2 years',
         breed: 'Exotic',
@@ -75,7 +85,7 @@
         location: 'Indonesia'
       },
       van: {
-        img: 'Blue-Tang.jpeg',
+        img: './media/turkishvan.jpg',
         name: 'Turkish Van',
         age: '1.5 years',
         breed: 'Van Cat',
@@ -84,7 +94,7 @@
         location: 'Turkey'
       },
       curl: {
-        img: 'butterflyfish.jpg',
+        img: './media/butterflyfish.jpg',
         name: 'American Curl',
         age: '3 years',
         breed: 'Curl Cat',
@@ -93,7 +103,7 @@
         location: 'USA'
       },
       persian: {
-        img: 'goldfish.jpg',
+        img: './media/whitepersian.webp',
         name: 'White Persian',
         age: '4 years',
         breed: 'Persian',
